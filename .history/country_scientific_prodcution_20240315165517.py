@@ -56,6 +56,15 @@ def count_country_frequency(affiliations):
     countries = countries.value_counts()
     return countries
 
+def count_country_frequency(affiliations):
+    """Cuenta la frecuencia de cada país en la columna 'countries'"""
+
+    countries = affiliations["countries"].copy()
+    countries = countries.str.split(", ")
+    countries = countries.explode()
+    countries = countries.value_counts()
+    return countries
+
 def plot_world_map(countries):
     """Grafica un mapa mundial con la frecuencia de cada país."""
 
